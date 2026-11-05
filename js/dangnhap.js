@@ -27,6 +27,11 @@ function timTaiKhoan(ds, user, pass) {
  * nhân viên -> trang Quản lý; khách hàng -> về trang sản phẩm
  */
 function dangNhap() {
+    // Mạng chậm, file tài khoản chưa tải xong thì đừng báo sai mật khẩu
+    if (dsNhanVien.length == 0 || dsKhachHang.length == 0) {
+        document.getElementById("loiDangNhap").textContent = "Đang tải dữ liệu tài khoản, vui lòng bấm lại sau giây lát.";
+        return;
+    }
     var user = document.getElementById("txtUser").value.trim();
     var pass = document.getElementById("txtPass").value;
 
