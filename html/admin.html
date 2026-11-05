@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý bán hàng - UEL Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+<header>
+    <div class="logo"></div>
+    <nav id="menuChinh"></nav>
+    <div id="userBox" class="tai-khoan"></div>
+</header>
+
+<main class="trang-admin">
+    <div class="tieu-de-admin">
+        <h1 data-i18n="ad.tieude">Tổng quan bán hàng</h1>
+        <p class="phu">Gộp hóa đơn tại cửa hàng (carts.xml) và đơn đặt online (localStorage)</p>
+    </div>
+
+    <!-- 4 chỉ số chính -->
+    <section class="thong-ke">
+        <article class="o-thong-ke">
+            <span data-i18n="ad.doanhthu">Doanh thu</span>
+            <b id="tkDoanhThu">$0.00</b>
+            <small id="tkDoanhThuPhu"></small>
+        </article>
+        <article class="o-thong-ke">
+            <span data-i18n="ad.sodon">Số đơn hàng</span>
+            <b id="tkSoDon">0</b>
+            <small id="tkSoDonPhu"></small>
+        </article>
+        <article class="o-thong-ke">
+            <span data-i18n="ad.tb">Giá trị TB / đơn</span>
+            <b id="tkTrungBinh">$0.00</b>
+            <small>Doanh thu chia số đơn</small>
+        </article>
+        <article class="o-thong-ke">
+            <span data-i18n="ad.dabán">Sản phẩm đã bán</span>
+            <b id="tkSoSP">0</b>
+            <small id="tkSoSPPhu"></small>
+        </article>
+    </section>
+
+    <!-- Biểu đồ -->
+    <section class="hai-o">
+        <article class="the-admin">
+            <h3 data-i18n="ad.theongay">Doanh thu theo ngày</h3>
+            <p class="phu goi-y">Bấm vào cột để xem đơn của ngày đó</p>
+            <div id="bieuDoNgay" class="bieu-do-cot"></div>
+        </article>
+        <article class="the-admin">
+            <h3 data-i18n="ad.theodm">Doanh thu theo danh mục</h3>
+            <p class="phu goi-y">Bấm vào danh mục để xem đơn có sản phẩm thuộc danh mục đó</p>
+            <div id="bieuDoDanhMuc"></div>
+        </article>
+    </section>
+
+    <section class="hai-o">
+        <article class="the-admin">
+            <h3><span data-i18n="ad.top">Sản phẩm được bán</span> <span class="nhan nhan-vang" id="soSPBan"></span></h3>
+            <p class="phu goi-y">Xếp theo số lượng bán · bấm để xem đơn có sản phẩm đó</p>
+            <div id="topSanPham"></div>
+        </article>
+        <article class="the-admin">
+            <h3 id="khuTonKho"><span data-i18n="ad.cannhap">Cần nhập hàng</span> <span class="nhan nhan-do" id="soCanNhap">0</span></h3>
+            <p class="phu">Tồn kho còn lại = tồn kho ban đầu - số đã bán, dưới 15 là cần nhập</p>
+            <div id="canNhapHang"></div>
+            <h3 class="cach-tren" data-i18n="ad.nhanvien">Hiệu suất nhân viên</h3>
+            <div id="hieuSuatNV"></div>
+        </article>
+    </section>
+
+    <!-- Danh sách đơn hàng -->
+    <section class="the-admin" id="khuDonHang">
+        <div class="hang-loc">
+            <h3 data-i18n="ad.donhang">Đơn hàng</h3>
+            <div id="chipLoc"></div>
+            <input type="search" id="txtTimDon" placeholder="Tìm mã HĐ hoặc tên khách..." oninput="locDonHang()">
+            <select id="selKenh" onchange="locDonHang()">
+                <option value="">Tất cả kênh</option>
+                <option value="cuahang">Tại cửa hàng</option>
+                <option value="online">Online</option>
+            </select>
+        </div>
+        <table class="bang-don">
+            <thead>
+                <tr>
+                    <th>Mã HĐ</th>
+                    <th>Ngày</th>
+                    <th>Khách hàng</th>
+                    <th>Nhân viên</th>
+                    <th>Kênh</th>
+                    <th>Số SP</th>
+                    <th class="so">Tổng tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="donBody">
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<!-- Hộp chi tiết đơn -->
+<div id="hopChiTietDon" class="hop-thoai">
+    <article class="noi-dung">
+        <button class="dong" onclick="document.getElementById('hopChiTietDon').style.display='none'">×</button>
+        <div id="chiTietDonBody"></div>
+    </article>
+</div>
+
+<footer>
+    <b>UEL Shop</b> - Bài kiểm tra giữa kỳ Phát triển Web Kinh Doanh (BW08)<br>
+    Sinh viên: Vũ Sơn Trúc - MSSV: K244161819
+</footer>
+
+<script src="../js/chung.js"></script>
+<script src="../js/giaodien.js"></script>
+<script src="../js/admin.js"></script>
+<script>
+    kiemTraQuyen("dangnhap.html");
+    veHeader("admin", "../");
+    loadDonHang("../dataset/");
+</script>
+</body>
+</html>

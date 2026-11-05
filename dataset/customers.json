@@ -1,0 +1,74 @@
+[
+  {
+    "id": "KH01",
+    "username": "khach1",
+    "password": "123456",
+    "name": "Phạm Minh Đức",
+    "phone": "0932111222",
+    "email": "khach1@gmail.com",
+    "address": "12 Lê Lợi, Q.1, TP.HCM"
+  },
+  {
+    "id": "KH02",
+    "username": "khach2",
+    "password": "123456",
+    "name": "Hoàng Thu Hà",
+    "phone": "0763222333",
+    "email": "khach2@gmail.com",
+    "address": "45 Nguyễn Trãi, Q.5, TP.HCM"
+  },
+  {
+    "id": "KH03",
+    "username": "khach3",
+    "password": "123456",
+    "name": "Võ Gia Huy",
+    "phone": "0388333444",
+    "email": "khach3@gmail.com",
+    "address": "8 Võ Văn Ngân, Thủ Đức"
+  },
+  {
+    "id": "KH04",
+    "username": "khach4",
+    "password": "123456",
+    "name": "Đặng Ngọc Lan",
+    "phone": "0855444555",
+    "email": "khach4@gmail.com",
+    "address": "221 Cách Mạng Tháng 8, Q.3"
+  },
+  {
+    "id": "KH05",
+    "username": "khach5",
+    "password": "123456",
+    "name": "Bùi Quốc Minh",
+    "phone": "0977555666",
+    "email": "khach5@gmail.com",
+    "address": "66 Phan Xích Long, Phú Nhuận"
+  },
+  {
+    "id": "KH06",
+    "username": "khach6",
+    "password": "123456",
+    "name": "Ngô Thảo Nhi",
+    "phone": "0903666777",
+    "email": "khach6@gmail.com",
+    "address": "90 Quang Trung, Gò Vấp"
+  },
+  {
+    "id": "KH07",
+    "username": "khach7",
+    "password": "123456",
+    "name": "Đỗ Thanh Phong",
+    "phone": "0369777888",
+    "email": "khach7@gmail.com",
+    "address": "17 Lũy Bán Bích, Tân Phú"
+  },
+  {
+    "id": "KH08",
+    "username": "khach8",
+    "password": "123456",
+    "name": "Lý Mỹ Tâm",
+    "phone": "0798888999",
+    "email": "khach8@gmail.com",
+    "address": "3 Hoàng Diệu, Q.4"
+  }
+]

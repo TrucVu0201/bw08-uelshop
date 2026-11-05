@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UEL Shop - Danh sách sản phẩm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- Câu 2: layout semantic HTML5 -->
+<header>
+    <div class="logo"></div>
+    <nav id="menuChinh"></nav>
+    <div id="userBox" class="tai-khoan"></div>
+
+    <!-- Câu 6: mini-cart đè lên màn hình (position absolute + z-index) -->
+    <div id="miniCart" class="mini-cart">
+        <h3 data-i18n="gio.tieude">Giỏ hàng</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Biến thể</th>
+                    <th>SL</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="gioBody">
+            </tbody>
+        </table>
+        <p class="tong"><span data-i18n="gio.tong">Tổng tiền:</span> <b id="tongTien">$0.00</b></p>
+        <button class="btn" onclick="moThanhToan()" data-i18n="menu.thanhtoan">Thanh toán</button>
+        <button class="btn btn-phu" onclick="batTatMiniCart()" data-i18n="gio.dong">Đóng</button>
+    </div>
+    <div class="ticker">
+        <div class="ticker-chay">
+            <span data-i18n="ticker">FREESHIP ĐƠN TỪ $50 ✦ ĐỔI TRẢ 7 NGÀY ✦ CHỌN MÀU CHỌN SIZE TRÊN THẺ ✦ THANH TOÁN KHI NHẬN HÀNG ✦</span>
+            <span data-i18n="ticker">FREESHIP ĐƠN TỪ $50 ✦ ĐỔI TRẢ 7 NGÀY ✦ CHỌN MÀU CHỌN SIZE TRÊN THẺ ✦ THANH TOÁN KHI NHẬN HÀNG ✦</span>
+        </div>
+    </div>
+</header>
+
+<main class="khung">
+    <!-- Câu 2: form tìm kiếm nâng cao ở aside -->
+    <aside>
+        <h3 data-i18n="tim.tieude">Tìm kiếm nâng cao</h3>
+        <form id="frmTimKiem" onsubmit="timKiem(); return false;">
+            <label for="txtTuKhoa" data-i18n="tim.ten">Tên sản phẩm</label>
+            <input type="search" id="txtTuKhoa" placeholder="Ví dụ: shirt" data-i18n-ph="tim.vidu" minlength="2" maxlength="30"
+                   pattern="[A-Za-z0-9 \-]*" title="Chỉ nhập chữ không dấu, số, khoảng trắng">
+
+            <label for="selDanhMuc" data-i18n="tim.danhmuc">Danh mục</label>
+            <select id="selDanhMuc" required>
+                <option value="all" data-i18n="tim.tatCaDM">Tất cả danh mục</option>
+            </select>
+
+            <label data-i18n="tim.gia">Khoảng giá ($)</label>
+            <div class="hai-cot">
+                <input type="number" id="txtGiaTu" placeholder="Từ" data-i18n-ph="tim.tu" min="0" max="1000" step="0.01">
+                <input type="number" id="txtGiaDen" placeholder="Đến" data-i18n-ph="tim.den" min="0" max="1000" step="0.01">
+            </div>
+
+            <label for="selMau" data-i18n="tim.mau">Màu sắc</label>
+            <select id="selMau">
+                <option value="" data-i18n="tim.tatCaMau">Tất cả màu</option>
+                <option>Đen</option>
+                <option>Trắng</option>
+                <option>Đỏ</option>
+                <option>Xanh</option>
+                <option>Vàng</option>
+                <option>Bạc</option>
+                <option>Vàng hồng</option>
+                <option>Be</option>
+                <option>Xám</option>
+            </select>
+
+            <label for="rngRating"><span data-i18n="tim.rating">Rating tối thiểu</span>: <b id="lblRating">0</b> ★</label>
+            <input type="range" id="rngRating" min="0" max="5" step="0.5" value="0"
+                   oninput="document.getElementById('lblRating').textContent = this.value">
+
+            <button type="submit" class="btn" data-i18n="tim.nut">Tìm kiếm</button>
+            <button type="reset" class="btn btn-phu" onclick="setTimeout(timKiem, 0)" data-i18n="tim.xoa">Xóa lọc</button>
+            <p id="loiTimKiem" class="loi"></p>
+        </form>
+    </aside>
+
+    <!-- Câu 3: lưới sản phẩm -->
+    <section>
+        <div class="hero">
+            <p class="hero-tag" data-i18n="hero.tag">Săn deal tháng 11</p>
+            <h1><span class="h1a" data-i18n="hero.h1a">Cần gì</span><br><span class="h1b" data-i18n="hero.h1b">có nấy</span><span class="dau-hoi">!</span></h1>
+            <div class="hero-ben">
+                <p data-i18n="hero.p">Quần áo, trang sức, ổ cứng, màn hình — đủ cả. Chọn màu, chọn size ngay trên thẻ, bấm là vào giỏ.</p>
+                <a href="#dsSanPham" class="btn" data-i18n="hero.btn">Xem hết 20 món</a>
+            </div>
+            <div class="hero-anh" id="heroAnh"></div>
+        </div>
+        <h2 class="tieu-de-luoi"><span class="chu" data-i18n="luoi.tieude">Đang bán</span> <span id="soKetQua"></span></h2>
+        <div id="dsSanPham" class="luoi">
+        </div>
+    </section>
+</main>
+
+<!-- Câu 4: hộp Xem nhanh -->
+<div id="hopXemNhanh" class="hop-thoai">
+    <article class="noi-dung">
+        <button class="dong" onclick="dongHop('hopXemNhanh')">×</button>
+        <div id="xemNhanhBody"></div>
+    </article>
+</div>
+
+<!-- Câu 5: hộp Rating Detail -->
+<div id="hopDanhGia" class="hop-thoai">
+    <article class="noi-dung">
+        <button class="dong" onclick="dongHop('hopDanhGia')">×</button>
+        <h3 id="tieuDeDanhGia">Đánh giá</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Khách hàng</th>
+                    <th>Số sao</th>
+                    <th>Nhận xét</th>
+                    <th>Ngày</th>
+                </tr>
+            </thead>
+            <tbody id="danhGiaBody">
+            </tbody>
+        </table>
+    </article>
+</div>
+
+<!-- Câu 7: hộp Thanh toán -->
+<div id="hopThanhToan" class="hop-thoai">
+    <article class="noi-dung">
+        <button class="dong" onclick="dongHop('hopThanhToan')">×</button>
+        <h3 data-i18n="tt.tieude">Thông tin giao hàng</h3>
+        <form id="frmThanhToan" onsubmit="thanhToan(); return false;" novalidate>
+            <label for="txtHoTen" data-i18n="tt.hoten">Họ tên</label>
+            <input type="text" id="txtHoTen" onkeyup="kiemTraHoTen()" onblur="kiemTraHoTen()">
+            <span id="loiHoTen" class="loi"></span>
+
+            <label for="txtDienThoai" data-i18n="tt.sdt">Số điện thoại</label>
+            <input type="text" id="txtDienThoai" placeholder="Ví dụ: 0901234567"
+                   onkeyup="kiemTraDienThoai()" onblur="kiemTraDienThoai()">
+            <span id="loiDienThoai" class="loi"></span>
+
+            <label for="txtEmail">Email</label>
+            <input type="text" id="txtEmail" placeholder="Ví dụ: ten@gmail.com"
+                   onkeyup="kiemTraEmail()" onblur="kiemTraEmail()">
+            <span id="loiEmail" class="loi"></span>
+
+            <label for="txtDiaChi" data-i18n="tt.diachi">Địa chỉ giao hàng</label>
+            <input type="text" id="txtDiaChi" onkeyup="kiemTraDiaChi()" onblur="kiemTraDiaChi()">
+            <span id="loiDiaChi" class="loi"></span>
+
+            <p class="tong"><span data-i18n="tt.tong">Tổng thanh toán:</span> <b id="tongThanhToan">$0.00</b></p>
+            <button type="submit" class="btn" data-i18n="tt.nut">Xác nhận thanh toán</button>
+            <p id="ketQuaThanhToan"></p>
+        </form>
+    </article>
+</div>
+
+<footer>
+    <b>UEL Shop</b> - Bài kiểm tra giữa kỳ Phát triển Web Kinh Doanh (BW08)<br>
+    Sinh viên: Vũ Sơn Trúc - MSSV: K244161819
+</footer>
+
+<script src="js/chung.js"></script>
+<script src="js/giaodien.js"></script>
+<script src="js/sanpham.js"></script>
+<script src="js/danhgia.js"></script>
+<script src="js/giohang.js"></script>
+<script src="js/thanhtoan.js"></script>
+<script>
+    veHeader("cuahang", "");
+    hienThiGioHang();
+    loadSanPham("dataset/products.xml");
+</script>
+
+</body>
+</html>

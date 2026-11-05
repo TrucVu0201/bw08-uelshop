@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập - UEL Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+<header>
+    <div class="logo"></div>
+    <nav id="menuChinh"></nav>
+    <div id="userBox" class="tai-khoan"></div>
+</header>
+
+<main>
+    <form class="hop-dang-nhap" onsubmit="dangNhap(); return false;">
+        <h2 data-i18n="dn.tieude">Đăng nhập</h2>
+        <label for="txtUser" data-i18n="dn.user">Tên đăng nhập</label>
+        <input type="text" id="txtUser" required>
+        <label for="txtPass" data-i18n="dn.pass">Mật khẩu</label>
+        <input type="password" id="txtPass" required>
+        <p id="loiDangNhap" class="loi"></p>
+        <button type="submit" class="btn" data-i18n="dn.tieude">Đăng nhập</button>
+        <p class="phu">Nhân viên (vào trang Quản lý): admin / admin123<br>
+           Khách hàng (điền sẵn thông tin khi thanh toán): khach1 / 123456</p>
+    </form>
+</main>
+
+<footer>
+    <b>UEL Shop</b> - Bài kiểm tra giữa kỳ Phát triển Web Kinh Doanh (BW08)<br>
+    Sinh viên: Vũ Sơn Trúc - MSSV: K244161819
+</footer>
+
+<script src="../js/chung.js"></script>
+<script src="../js/giaodien.js"></script>
+<script src="../js/dangnhap.js"></script>
+<script>
+    veHeader("dangnhap", "../");
+    loadTaiKhoan("../dataset/employees.json", "../dataset/customers.json");
+</script>
+</body>
+</html>

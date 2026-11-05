@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<carts>
+  <cart id="HD001">
+    <date>2026-10-03</date>
+    <employee_id>NV01</employee_id>
+    <customer_id>KH01</customer_id>
+    <items>
+      <item product_id="11" color="Bạc" size="" quantity="3" price="109" />
+      <item product_id="17" color="Trắng" size="L" quantity="3" price="39.99" />
+    </items>
+  </cart>
+  <cart id="HD002">
+    <date>2026-10-06</date>
+    <employee_id>NV02</employee_id>
+    <customer_id>KH02</customer_id>
+    <items>
+      <item product_id="7" color="Bạc" size="" quantity="2" price="9.99" />
+    </items>
+  </cart>
+  <cart id="HD003">
+    <date>2026-10-09</date>
+    <employee_id>NV03</employee_id>
+    <customer_id>KH03</customer_id>
+    <items>
+      <item product_id="19" color="Trắng" size="L" quantity="2" price="7.95" />
+      <item product_id="10" color="Trắng" size="" quantity="2" price="109" />
+    </items>
+  </cart>
+  <cart id="HD004">
+    <date>2026-10-12</date>
+    <employee_id>NV01</employee_id>
+    <customer_id>KH04</customer_id>
+    <items>
+      <item product_id="17" color="Trắng" size="M" quantity="2" price="39.99" />
+      <item product_id="12" color="Trắng" size="" quantity="3" price="114" />
+      <item product_id="19" color="Đỏ" size="L" quantity="1" price="7.95" />
+    </items>
+  </cart>
+  <cart id="HD005">
+    <date>2026-10-15</date>
+    <employee_id>NV02</employee_id>
+    <customer_id>KH05</customer_id>
+    <items>
+      <item product_id="16" color="Xám" size="XL" quantity="1" price="29.95" />
+    </items>
+  </cart>
+  <cart id="HD006">
+    <date>2026-10-18</date>
+    <employee_id>NV03</employee_id>
+    <customer_id>KH06</customer_id>
+    <items>
+      <item product_id="9" color="Trắng" size="" quantity="2" price="64" />
+      <item product_id="10" color="Xanh" size="" quantity="3" price="109" />
+      <item product_id="20" color="Xanh" size="M" quantity="2" price="12.99" />
+    </items>
+  </cart>
+  <cart id="HD007">
+    <date>2026-10-21</date>
+    <employee_id>NV01</employee_id>
+    <customer_id>KH07</customer_id>
+    <items>
+      <item product_id="8" color="Vàng hồng" size="" quantity="3" price="10.99" />
+    </items>
+  </cart>
+  <cart id="HD008">
+    <date>2026-10-24</date>
+    <employee_id>NV02</employee_id>
+    <customer_id>KH08</customer_id>
+    <items>
+      <item product_id="8" color="Vàng hồng" size="" quantity="3" price="10.99" />
+      <item product_id="20" color="Be" size="L" quantity="2" price="12.99" />
+    </items>
+  </cart>
+</carts>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Câu 1 - Tạo products.xml</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+<header>
+    <div class="logo"></div>
+    <nav id="menuChinh"></nav>
+    <div id="userBox" class="tai-khoan"></div>
+</header>
+
+<main class="trang-don">
+    <h2>Câu 1: Tạo products.xml từ fakestoreapi</h2>
+    <p>Đọc dữ liệu từ <b>https://fakestoreapi.com/products</b>, dùng mô hình DOM bổ sung màu sắc, size, tồn kho rồi xuất ra file <b>products.xml</b>.</p>
+    <button class="btn" onclick="taoProducts('https://fakestoreapi.com/products')">Tạo products.xml</button>
+    <a id="lnkTai" class="btn btn-phu" style="display:none">Tải products.xml</a>
+    <p id="trangThai"></p>
+    <textarea id="ketQuaXML" rows="22"></textarea>
+</main>
+
+<footer>
+    <b>UEL Shop</b> - Bài kiểm tra giữa kỳ Phát triển Web Kinh Doanh (BW08)<br>
+    Sinh viên: Vũ Sơn Trúc - MSSV: K244161819
+</footer>
+
+<script src="../js/chung.js"></script>
+<script src="../js/giaodien.js"></script>
+<script src="../js/taoproducts.js"></script>
+<script>
+    veHeader("dulieu", "../");
+</script>
+</body>
+</html>
